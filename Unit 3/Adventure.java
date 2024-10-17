@@ -165,6 +165,7 @@ public class Adventure
             }
             else if (playerX == -3 && playerY == 0) {
                 System.out.println("You enter the castle. Inside, you find chests of gold and precious jewels.");
+                System.out.println("You finished! Thanks for playing!");
 
                 end = true;
             }
@@ -218,7 +219,6 @@ public class Adventure
           }
 
         }
-      System.out.println("Thanks for playing!");
       scan.close();
     }
 }
