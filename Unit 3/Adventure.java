@@ -62,7 +62,7 @@ public class Adventure
                 wMove = false;
             }
             else if (playerX == 0 && playerY == 2) {
-                System.out.println("You continue into the forest. The trees are getting thicker.");
+                System.out.println("You continue. The trees are looming over you.");
 
                 nMove = true;
                 sMove = true;
