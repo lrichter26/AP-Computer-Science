@@ -83,5 +83,6 @@ public class AnimalGuessingGame {
 				}
 			}
 		}
+		scan.close();
 	}
 }
