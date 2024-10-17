@@ -14,22 +14,28 @@ public class Adventure
         boolean wMove = true;
         boolean key = false;
       Scanner scan = new Scanner(System.in);
-      System.out.println("You wake up in a field. A dark forest is in the north, and paths lead east and west. To the south there is a large pit.");
+      System.out.println("");
+      System.out.println("");
+      System.out.println("You wake up in a field. A dark forest is in the north, and a road runs east and west. To the south there is a large pit.");
       while (end == false) {
         invalid = false;
         String command = scan.nextLine();
 
           if (command.equals("n") && nMove == true) {
               playerY += 1;
+              System.out.println("");
           }
           else if (command.equals("s") && sMove == true) {
               playerY -= 1;
+              System.out.println("");
           }
           else if (command.equals("e") && eMove == true) {
             playerX += 1;
+            System.out.println("");
           }
           else if (command.equals("w") && wMove == true) {
             playerX -= 1;
+            System.out.println("");
           }
           else {
             invalid = true;
@@ -48,7 +54,7 @@ public class Adventure
                 wMove = true;
             }
             else if (playerX == 0 && playerY == 1) {
-                System.out.println("You are at the border of a dark forest. A path runs north to south, and tall trees block east and west.");
+                System.out.println("You are at the border of a dark forest. A path runs into the forest, and tall trees block east and west.");
 
                 nMove = true;
                 sMove = true;
@@ -72,7 +78,7 @@ public class Adventure
                 wMove = false;
             }
             else if (playerX == 1 && playerY == 0) {
-                System.out.println("The road runs east to west.");
+                System.out.println("You continue on the road.");
 
                 nMove = false;
                 sMove = false;
@@ -80,7 +86,7 @@ public class Adventure
                 wMove = true;
             }
             else if (playerX == -1 && playerY == 0) {
-                System.out.println("The road runs east to west.");
+                System.out.println("You continue on the road.");
 
                 nMove = false;
                 sMove = false;
