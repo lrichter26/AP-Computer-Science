@@ -13,6 +13,7 @@ public class Adventure
         boolean eMove = true;
         boolean wMove = true;
         boolean key = false;
+        boolean castle = false;
       Scanner scan = new Scanner(System.in);
       System.out.println("");
       System.out.println("");
@@ -154,9 +155,11 @@ public class Adventure
                 sMove = false;
                 eMove = true;
                 wMove = false;
+
+                castle = true;
             }
             else if (playerX == -2 && playerY == 0 && key == true) {
-                System.out.println("A large castle is at the end of the road. There is a small door in the wall that you have opened.");
+                System.out.println("A large castle is at the end of the road. There is a small door in the wall that you open with the key.");
 
                 nMove = false;
                 sMove = false;
@@ -178,15 +181,15 @@ public class Adventure
                 wMove = true;
             }
             else if (playerX == 2 && playerY == 1) {
-                System.out.println("You come across a small hut in front of you. There is nobody inside");
+                System.out.println("There is a small hut in front of you. Nobody is inside");
 
                 nMove = true;
                 sMove = true;
                 eMove = false;
                 wMove = false;
             }
-            else if (playerX == 2 && playerY == 2 && key == false) {
-                System.out.println("Inside the hut, there is a key. You take the key.");
+            else if (playerX == 2 && playerY == 2 && key == false && castle == true) {
+                System.out.println("Inside the hut, you notice a key of the same shape as the lock on the door in the castle. You take the key.");
 
                 nMove = false;
                 sMove = true;
@@ -194,6 +197,14 @@ public class Adventure
                 wMove = false;
 
                 key = true;
+            }
+            else if (playerX == 2 && playerY == 2 && castle == false) {
+                System.out.println("There are various objects inside the hut. Nothing catches your eye.");
+
+                nMove = false;
+                sMove = true;
+                eMove = false;
+                wMove = false;
             }
             else if (playerX == 2 && playerY == 2 && key == true) {
                 System.out.println("You have already taken the key.");
