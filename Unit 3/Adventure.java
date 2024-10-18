@@ -200,7 +200,7 @@ public class Adventure
                 key = true;
             }
             else if (playerX == 2 && playerY == 2 && castle == false) {
-                System.out.println("There are various objects inside the hut. Nothing catches your eye.");
+                System.out.println("There are various keys inside the hut. Nothing catches your eye.");
 
                 nMove = false;
                 sMove = true;
