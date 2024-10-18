@@ -4,16 +4,17 @@ public class Adventure
 {
   public static void main(String[] args)
   {
-        int playerY = 0;
-        int playerX = 0;
-        boolean invalid = false;
-        boolean end = false;
-        boolean nMove = true;
-        boolean sMove = true;
-        boolean eMove = true;
-        boolean wMove = true;
-        boolean key = false;
-        boolean castle = false;
+      int playerY = 0;
+      int playerX = 0;
+      boolean invalid = false;
+      boolean end = false;
+      boolean nMove = true;
+      boolean sMove = true;
+      boolean eMove = true;
+      boolean wMove = true;
+      boolean key = false;
+      boolean castle = false;
+
       Scanner scan = new Scanner(System.in);
       System.out.println("");
       System.out.println("");
@@ -22,19 +23,19 @@ public class Adventure
         invalid = false;
         String command = scan.nextLine();
 
-          if (command.equals("n") && nMove == true) {
+          if (command.equals("n") && nMove == true || command.equals("north") && nMove == true) {
               playerY += 1;
               System.out.println("");
           }
-          else if (command.equals("s") && sMove == true) {
+          else if (command.equals("s") && sMove == true || command.equals("south") && sMove == true) {
               playerY -= 1;
               System.out.println("");
           }
-          else if (command.equals("e") && eMove == true) {
+          else if (command.equals("e") && eMove == true || command.equals("east") && eMove == true) {
             playerX += 1;
             System.out.println("");
           }
-          else if (command.equals("w") && wMove == true) {
+          else if (command.equals("w") && wMove == true || command.equals("west") && wMove == true) {
             playerX -= 1;
             System.out.println("");
           }
@@ -230,6 +231,7 @@ public class Adventure
           }
 
         }
+				System.out.println("");
       scan.close();
     }
 }
