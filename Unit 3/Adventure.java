@@ -78,7 +78,7 @@ public class Adventure
                 wMove = false;
             }
             else if (playerX == 1 && playerY == 0) {
-                System.out.println("You continue on the road.");
+                System.out.println("You walk down the road.");
 
                 nMove = false;
                 sMove = false;
@@ -86,7 +86,7 @@ public class Adventure
                 wMove = true;
             }
             else if (playerX == -1 && playerY == 0) {
-                System.out.println("You continue on the road.");
+                System.out.println("You walk down the road.");
 
                 nMove = false;
                 sMove = false;
@@ -170,7 +170,7 @@ public class Adventure
                 end = true;
             }
             else if (playerX == 2 && playerY == 0) {
-                System.out.println("A man stops you and tells you that there are bandits ahead. You cannot go further east on the road, but there is a small footpath to the north");
+                System.out.println("A man stops you and tells you that there are bandits ahead. You cannot go further east on the road, but you notice a small footpath to the north");
 
                 nMove = true;
                 sMove = false;
