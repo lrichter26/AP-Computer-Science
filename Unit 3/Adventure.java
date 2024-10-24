@@ -44,7 +44,7 @@ public class Adventure
           }
 
           if (invalid == true) {
-            System.out.println("You cannot go that way!");
+            System.out.println("You cannot do that!");
           }
           else {
             if (playerX == 0 && playerY == 0) {
@@ -168,10 +168,13 @@ public class Adventure
                 wMove = true;
             }
             else if (playerX == -3 && playerY == 0) {
-                System.out.println("You enter the castle. Inside, you find chests of gold and precious jewels.");
-                System.out.println("You finished! Thanks for playing!");
+                System.out.println("You enter the castle. There is a suit of armor with a sword.");
+                
+                nMove = false;
+                sMove = false;
+                eMove = true;
+                wMove = false;
 
-                end = true;
             }
             else if (playerX == 2 && playerY == 0) {
                 System.out.println("A man stops you and tells you that there are bandits ahead. You cannot go further east on the road, but you notice a small footpath to the north");
