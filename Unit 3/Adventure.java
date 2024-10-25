@@ -6,14 +6,18 @@ public class Adventure
   {
       int playerY = 0;
       int playerX = 0;
+			int playerZ = 0;
       boolean invalid = false;
       boolean end = false;
       boolean nMove = true;
       boolean sMove = true;
       boolean eMove = true;
       boolean wMove = true;
+      boolean dMove = false;
+      boolean uMove = false;
       boolean key = false;
       boolean castle = false;
+      boolean sword = false;
 
       Scanner scan = new Scanner(System.in);
       System.out.println("");
@@ -39,6 +43,14 @@ public class Adventure
             playerX -= 1;
             System.out.println("");
           }
+        	else if (command.equals("d") && dMove == true || command.equals("down") && dMove == true || command.equals("climb down") && dMove == true) {
+          	playerZ -= 1;
+          	System.out.println("");
+        	}
+					else if (command.equals("u") && uMove == true || command.equals("up") && uMove == true || command.equals("climb up") && uMove == true) {
+          	playerZ += 1;
+          	System.out.println("");
+        	}
           else {
             invalid = true;
           }
@@ -95,7 +107,7 @@ public class Adventure
                 eMove = true;
                 wMove = true;
             }
-            else if (playerX == 0 && playerY == -1) {
+            else if (playerX == 0 && playerY == -1 && playerZ == 0) {
                 System.out.println("The large pit seems to have no bottom. A ladder goes down into the pit");
 
                 nMove = true;
@@ -103,7 +115,7 @@ public class Adventure
                 eMove = false;
                 wMove = false;
             }
-            else if (playerX == 0 && playerY == -2) {
+            else if (playerX == 0 && playerY == -1 && playerZ == -1) {
                 System.out.println("You climb the ladder.");
 
                 nMove = true;
@@ -111,39 +123,39 @@ public class Adventure
                 eMove = false;
                 wMove = false;
             }
-            else if (playerX == 0 && playerY == -3) {
+            else if (playerX == 0 && playerY == -1 && playerZ == -2) {
                 System.out.println("You climb the ladder. It is dim");
 
-                nMove = true;
-                sMove = true;
+                nMove = false;
+                sMove = false;
                 eMove = false;
                 wMove = false;
             }
-            else if (playerX == 0 && playerY == -4) {
+            else if (playerX == 0 && playerY == -1 && playerZ == -3) {
                 System.out.println("You climb the ladder. It is dark");
 
-                nMove = true;
-                sMove = true;
+                nMove = false;
+                sMove = false;
                 eMove = false;
                 wMove = false;
             }
-            else if (playerX == 0 && playerY == -5) {
+            else if (playerX == 0 && playerY == -1 && playerZ == -4) {
                 System.out.println("You climb the ladder. It is pitch black. You cannot see anything");
 
-                nMove = true;
-                sMove = true;
+                nMove = false;
+                sMove = false;
                 eMove = false;
                 wMove = false;
             }
-            else if (playerX == 0 && playerY == -6) {
+            else if (playerX == 0 && playerY == -1 && playerZ == -5) {
                 System.out.println("The ladder ends. You can jump down, or climb back up.");
 
-                nMove = true;
-                sMove = true;
+                nMove = false;
+                sMove = false;
                 eMove = false;
                 wMove = false;
             }
-            else if (playerX == 0 && playerY == -7) {
+            else if (playerX == 0 && playerY == -1 && playerZ == -6) {
                 System.out.println("You fall for what seems like a long time. Eventually, you see a light below you. You have just enough time to see the bottom before you hit it.");
                 System.out.println("What did you think was going to happen? Try for the real ending.");
 
@@ -176,7 +188,7 @@ public class Adventure
                 wMove = false;
 
             }
-            else if (playerX == 2 && playerY == 0) {
+            else if (playerX == 2 && playerY == 0 && sword == false) {
                 System.out.println("A man stops you and tells you that there are bandits ahead. You cannot go further east on the road, but you notice a small footpath to the north");
 
                 nMove = true;
