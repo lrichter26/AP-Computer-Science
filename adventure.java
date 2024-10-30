@@ -15,10 +15,14 @@ public class Adventure
       boolean wMove = true;
       boolean dMove = false;
       boolean uMove = false;
+
       boolean key = false;
-			boolean banditKill = false;
+	    int gold = 0;
+			int goldLoot = 0;
+			boolean banditGoldLooted = false;
       boolean castle = false;
       boolean sword = false;
+			boolean skipLocation = false;
 
       Scanner scan = new Scanner(System.in);
       System.out.println("");
@@ -27,38 +31,68 @@ public class Adventure
       while (end == false) {
         invalid = false;
         String command = scan.nextLine();
-
+					skipLocation = false;
           if (command.equals("n") && nMove == true || command.equals("north") && nMove == true) {
-              playerY += 1;
-              System.out.println("");
+            playerY += 1;
+						goldLoot = 0;
+            System.out.println("");
           }
           else if (command.equals("s") && sMove == true || command.equals("south") && sMove == true) {
-              playerY -= 1;
-              System.out.println("");
+            playerY -= 1;
+						goldLoot = 0;
+            System.out.println("");
           }
           else if (command.equals("e") && eMove == true || command.equals("east") && eMove == true) {
             playerX += 1;
+						goldLoot = 0;
             System.out.println("");
           }
           else if (command.equals("w") && wMove == true || command.equals("west") && wMove == true) {
             playerX -= 1;
+						goldLoot = 0;
             System.out.println("");
           }
         	else if (command.equals("d") && dMove == true || command.equals("down") && dMove == true || command.equals("climb down") && dMove == true) {
           	playerZ -= 1;
+						goldLoot = 0;
+          	System.out.println("");
+        	}
+					else if (command.equals("u") && uMove == true || command.equals("up") && uMove == true || command.equals("climb up") && uMove == true) {
+          	playerZ += 1;
+						goldLoot = 0;
           	System.out.println("");
         	}
 					else if (command.equals("u") && uMove == true || command.equals("up") && uMove == true || command.equals("climb up") && uMove == true) {
           	playerZ += 1;
           	System.out.println("");
         	}
+					else if (command.equals("g") || command.equals("gold") || command.equals("check gold")) {
+          	System.out.println("You have " + gold + " gold.");
+						skipLocation = true;
+        	}
+					else if (command.equals("take gold") || command.equals("l") || command.equals("loot") || command.equals("take coins")) {
+          	setLootVar();
+						System.out.println("You take " + goldLoot + " gold. You now have " + gold + " gold.");
+						goldLoot = 0;
+						skipLocation = true;
+        	}
           else {
             invalid = true;
           }
 
+          nMove = false;
+          sMove = false;
+          eMove = false;
+          wMove = false;
+          dMove = false;
+          uMove = false;
+
           if (invalid == true) {
             System.out.println("You cannot do that!");
           }
+					else if (skipLocation) {
+						System.out.println("");
+					}
           else {
             if (playerX == 0 && playerY == 0) {
                 System.out.println("You are in the field where you woke up. A dark forest is in the north, and a road runs east and west. To the south there is a large pit.");
@@ -67,118 +101,73 @@ public class Adventure
                 sMove = true;
                 eMove = true;
                 wMove = true;
-								dMove = false;
-								uMove = false;
             }
             else if (playerX == 0 && playerY == 1) {
                 System.out.println("You are at the border of a dark forest. A path runs into the forest, and tall trees block east and west.");
 
                 nMove = true;
                 sMove = true;
-                eMove = false;
-                wMove = false;
-								dMove = false;
-								uMove = false;
             }
             else if (playerX == 0 && playerY == 2) {
                 System.out.println("You continue. The trees are looming over you.");
 
                 nMove = true;
                 sMove = true;
-                eMove = false;
-                wMove = false;
-								dMove = false;
-								uMove = false;
             }
             else if (playerX == 0 && playerY == 3) {
                 System.out.println("The path ends. The forest is too dense to keep going.");
 
-                nMove = false;
                 sMove = true;
-                eMove = false;
-                wMove = false;
-								dMove = false;
-								uMove = false;
             }
             else if (playerX == 1 && playerY == 0) {
                 System.out.println("You walk down the road.");
 
-                nMove = false;
-                sMove = false;
                 eMove = true;
                 wMove = true;
-								dMove = false;
-								uMove = false;
             }
             else if (playerX == -1 && playerY == 0) {
                 System.out.println("You walk down the road.");
 
-                nMove = false;
-                sMove = false;
                 eMove = true;
                 wMove = true;
-								dMove = false;
-								uMove = false;
             }
             else if (playerX == 0 && playerY == -1 && playerZ == 0) {
                 System.out.println("The large pit seems to have no bottom. A ladder goes down into the pit");
 
                 nMove = true;
                 sMove = true;
-                eMove = false;
-                wMove = false;
 								dMove = true;
-								uMove = false;
             }
             else if (playerX == 0 && playerY == -1 && playerZ == -1) {
                 System.out.println("You climb the ladder.");
 
-                nMove = true;
-                sMove = true;
-                eMove = false;
-                wMove = false;
 								dMove = true;
 								uMove = true;
             }
             else if (playerX == 0 && playerY == -1 && playerZ == -2) {
                 System.out.println("You climb the ladder. It is dim");
 
-                nMove = false;
-                sMove = false;
-                eMove = false;
-                wMove = false;
 								dMove = true;
 								uMove = true;
             }
             else if (playerX == 0 && playerY == -1 && playerZ == -3) {
                 System.out.println("You climb the ladder. It is dark");
 
-                nMove = false;
-                sMove = false;
-                eMove = false;
-                wMove = false;
 								dMove = true;
 								uMove = true;
             }
             else if (playerX == 0 && playerY == -1 && playerZ == -4) {
                 System.out.println("You climb the ladder. It is pitch black. You cannot see anything");
 
-                nMove = false;
-                sMove = false;
-                eMove = false;
-                wMove = false;
 								dMove = true;
 								uMove = true;
             }
             else if (playerX == 0 && playerY == -1 && playerZ == -5) {
                 System.out.println("The ladder ends. You can jump down, or climb back up.");
 
-                nMove = false;
-                sMove = false;
-                eMove = false;
-                wMove = false;
-								dMove = true;
-								uMove = true;
+
+				        dMove = true;
+				        uMove = true;
             }
             else if (playerX == 0 && playerY == -1 && playerZ == -6) {
                 System.out.println("You fall for what seems like a long time. Eventually, you see a light below you. You have just enough time to see the bottom before you hit it.");
@@ -186,112 +175,82 @@ public class Adventure
 
                 end = true;
             }
-            else if (playerX == -2 && playerY == 0 && key == false) {
+            else if (playerX == -2 && playerY == 0 && !key) {
                 System.out.println("A large castle is at the end of the road. There is a small door in the wall that is locked.");
 
-                nMove = false;
-                sMove = false;
                 eMove = true;
-                wMove = false;
-								dMove = false;
-								uMove = false;
 
                 castle = true;
             }
-            else if (playerX == -2 && playerY == 0 && key == true) {
+            else if (playerX == -2 && playerY == 0 && key) {
                 System.out.println("A large castle is at the end of the road. There is a small door in the wall that you open with the key.");
 
-                nMove = false;
-                sMove = false;
                 eMove = true;
                 wMove = true;
-								dMove = false;
-								uMove = false;
             }
             else if (playerX == -3 && playerY == 0) {
                 System.out.println("You enter the castle. There is a suit of armor with a sword. You take the sword.");
                 
-                nMove = false;
-                sMove = false;
                 eMove = true;
-                wMove = false;
-								dMove = false;
-								uMove = false;
 
 								sword = true;
 
             }
-            else if (playerX == 2 && playerY == 0 && sword == false) {
+            else if (playerX == 2 && playerY == 0 && !sword) {
                 System.out.println("A man stops you and tells you that there are bandits ahead. You cannot go further east on the road, but you notice a small footpath to the north");
 
                 nMove = true;
-                sMove = false;
-                eMove = false;
                 wMove = true;
-								dMove = false;
-								uMove = false;
             }
-						else if (playerX == 2 && playerY == 0 && sword == true) {
-							System.out.println("You continue on the road. There is a small footpath to the north.");
+						else if (playerX == 2 && playerY == 0 && sword) {
+							System.out.println("You continue on the road. There is a small footpath to the north. There is a bandit camp to the east.");
 
 							nMove = true;
-							sMove = false;
 							eMove = true;
 							wMove = true;
-							dMove = false;
-							uMove = false;
 					}
-					else if (playerX == 3 && playerY == 0 && banditKill == false) {
-						System.out.println("T");
+					else if (playerX == 3 && playerY == 0 && !chestKey1) {
+						System.out.println("There is no one in the badit camp. There is a locked chest.");
 
-						nMove = false;
-						sMove = false;
 						eMove = true;
 						wMove = true;
-						dMove = false;
-						uMove = false;
-				}
+					}
+					else if (playerX == 3 && playerY == 0 && chestKey1 && !banditGoldLooted) {
+						System.out.println("There is no one in the badit camp. The unlocked chest contains gold coins.");
+
+						eMove = true;
+						wMove = true;
+
+						int goldLoot = 100;
+					}
+					else if (playerX == 3 && playerY == 0 && banditGoldLooted) {
+						System.out.println("There is no one in the badit camp.");
+
+						eMove = true;
+						wMove = true;
+					}
             else if (playerX == 2 && playerY == 1) {
                 System.out.println("There is a small hut in front of you. Nobody is inside");
 
                 nMove = true;
                 sMove = true;
-                eMove = false;
-                wMove = false;
-								dMove = false;
-								uMove = false;
             }
-            else if (playerX == 2 && playerY == 2 && key == false && castle == true) {
+            else if (playerX == 2 && playerY == 2 && !key && castle) {
                 System.out.println("Inside the hut, you notice a key of the same shape as the lock on the door in the castle. You take the key.");
 
-                nMove = false;
                 sMove = true;
-                eMove = false;
-                wMove = false;
-								dMove = false;
-								uMove = false;
 
                 key = true;
             }
-            else if (playerX == 2 && playerY == 2 && castle == false) {
+            else if (playerX == 2 && playerY == 2 && !castle) {
                 System.out.println("There are various keys inside the hut. Nothing catches your eye.");
 
-                nMove = false;
                 sMove = true;
-                eMove = false;
-                wMove = false;
-								dMove = false;
-								uMove = false;
             }
-            else if (playerX == 2 && playerY == 2 && key == true) {
+            else if (playerX == 2 && playerY == 2 && key) {
                 System.out.println("You have already taken the key.");
 
-                nMove = false;
                 sMove = true;
-                eMove = false;
-                wMove = false;
-								dMove = false;
-								uMove = false;
             }
             else {
                 System.out.println("Out of bounds! Returning player to start.");
