@@ -1,3 +1,4 @@
+package Adventure;
 import java.util.Scanner;
 
 public class Adventure
@@ -71,8 +72,8 @@ public class Adventure
 						skipLocation = true;
         	}
 					else if (command.equals("take gold") || command.equals("l") || command.equals("loot") || command.equals("take coins")) {
-          	setLootVar();
-						System.out.println("You take " + goldLoot + " gold. You now have " + gold + " gold.");
+          	takeLoot(playerX, playerY, playerZ);
+						System.out.println("You take " + getLootAmount(playerX, playerY, playerZ) + " gold. You now have " + gold + " gold.");
 						goldLoot = 0;
 						skipLocation = true;
         	}
