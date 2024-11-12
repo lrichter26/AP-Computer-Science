@@ -1,6 +1,5 @@
 package Adventure;
 import java.util.Scanner;
-
 public class Adventure
 {
   public static void main(String[] args)
@@ -17,50 +16,44 @@ public class Adventure
       boolean dMove = false;
       boolean uMove = false;
 
+      int gold = 0;
       boolean key = false;
-	    int gold = 0;
-			int goldLoot = 0;
-			boolean banditGoldLooted = false;
       boolean castle = false;
       boolean sword = false;
 			boolean skipLocation = false;
 
+      String command;
       Scanner scan = new Scanner(System.in);
       System.out.println("");
       System.out.println("");
       System.out.println("You wake up in a field. A dark forest is in the north, and a road runs east and west. To the south there is a large pit.");
       while (end == false) {
         invalid = false;
-        String command = scan.nextLine();
+        command = scan.nextLine();
+        command = command.toLowerCase();
 					skipLocation = false;
           if (command.equals("n") && nMove == true || command.equals("north") && nMove == true) {
             playerY += 1;
-						goldLoot = 0;
             System.out.println("");
           }
           else if (command.equals("s") && sMove == true || command.equals("south") && sMove == true) {
             playerY -= 1;
-						goldLoot = 0;
             System.out.println("");
           }
           else if (command.equals("e") && eMove == true || command.equals("east") && eMove == true) {
             playerX += 1;
-						goldLoot = 0;
             System.out.println("");
           }
           else if (command.equals("w") && wMove == true || command.equals("west") && wMove == true) {
             playerX -= 1;
-						goldLoot = 0;
             System.out.println("");
           }
         	else if (command.equals("d") && dMove == true || command.equals("down") && dMove == true || command.equals("climb down") && dMove == true) {
           	playerZ -= 1;
-						goldLoot = 0;
           	System.out.println("");
         	}
 					else if (command.equals("u") && uMove == true || command.equals("up") && uMove == true || command.equals("climb up") && uMove == true) {
           	playerZ += 1;
-						goldLoot = 0;
           	System.out.println("");
         	}
 					else if (command.equals("u") && uMove == true || command.equals("up") && uMove == true || command.equals("climb up") && uMove == true) {
@@ -71,10 +64,10 @@ public class Adventure
           	System.out.println("You have " + gold + " gold.");
 						skipLocation = true;
         	}
-					else if (command.equals("take gold") || command.equals("l") || command.equals("loot") || command.equals("take coins")) {
-          	takeLoot(playerX, playerY, playerZ);
-						System.out.println("You take " + getLootAmount(playerX, playerY, playerZ) + " gold. You now have " + gold + " gold.");
-						goldLoot = 0;
+					else if (command.equals("take gold") || command.equals("l") || command.equals("loot") || command.equals("take coins") || command.equals("take loot")) {
+          	if (!Loot.getLooted(playerX, playerY, playerZ)) {}
+            gold += Loot.takeLoot(playerX, playerY, playerZ);
+						System.out.println("You take " + Loot.getLootAmount(playerX, playerY, playerZ) + " gold. You now have " + gold + " gold.");
 						skipLocation = true;
         	}
           else {
@@ -224,7 +217,7 @@ public class Adventure
 
 						int goldLoot = 100;
 					}
-					else if (playerX == 3 && playerY == 0 && banditGoldLooted) {
+					else if (playerX == 3 && playerY == 0 && Loot.banditGoldLooted(playerX, playerY, playerZ)) {
 						System.out.println("There is no one in the badit camp.");
 
 						eMove = true;
