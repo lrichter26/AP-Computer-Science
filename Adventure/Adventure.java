@@ -231,7 +231,7 @@ public class Adventure
 
                 sMove = true;
 
-                key = true;
+                castleKey = true;
             }
 
             else if (playerX == 2 && playerY == 2) {
