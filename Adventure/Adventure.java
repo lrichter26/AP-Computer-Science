@@ -66,9 +66,11 @@ public class Adventure
         	}
 					else if (command.equals("take gold") || command.equals("l") || command.equals("loot") || command.equals("take coins") || command.equals("take loot")) {
             skipLocation = true;
-          	if (!Loot.getLooted(playerX, playerY, playerZ)) {
-              System.out.println("You take " + Loot.getLootAmount(playerX, playerY, playerZ) + " gold. You now have " + gold + " gold.");
-              gold += Loot.takeLoot(playerX, playerY, playerZ);
+          	if (!Util.getLooted(playerX, playerY, playerZ)) {
+              System.out.print("You take " + Util.getLootAmount(playerX, playerY, playerZ) + " gold. ");
+              gold += Util.takeLoot(playerX, playerY, playerZ);
+              System.out.println("You now have " + gold + " gold.");
+              
             }
             else {
               System.out.println("There is nothing to loot!");
@@ -93,7 +95,7 @@ public class Adventure
 					}
           else {
             if (playerX == 0 && playerY == 0) {
-                System.out.println("You are in the field where you woke up. A dark forest is in the north, and a road runs east and west. To the south there is a large pit.");
+                System.out.println("You are in the field where you woke up. A dark forest is in the north, and a road runs east and west. To the south there is a large pit");
 
                 nMove = true;
                 sMove = true;
@@ -207,8 +209,15 @@ public class Adventure
 							eMove = true;
 							wMove = true;
             }
-            else if (playerX == 3 && playerY == 0 && !Loot.getLooted(playerX, playerY, playerZ)) {
+            else if (playerX == 3 && playerY == 0 && !Util.getLooted(playerX, playerY, playerZ)) {
               System.out.println("There is no one in the badit camp. There are various gold coins lying around.");
+
+              eMove = true;
+              wMove = true;
+
+            }
+            else if (playerX == 3 && playerY == 0) {
+              System.out.println("There is no one in the badit camp. There is a town to the south, and a ");
 
               eMove = true;
               wMove = true;
