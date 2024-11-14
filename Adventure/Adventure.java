@@ -210,16 +210,18 @@ public class Adventure
 							wMove = true;
             }
             else if (playerX == 3 && playerY == 0 && !Util.getLooted(playerX, playerY, playerZ)) {
-              System.out.println("There is no one in the badit camp. There are various gold coins lying around.");
+              System.out.println("There is no one in the badit camp. There are various gold coins lying around. There is a town to the south, and a cliff to the north.");
 
-              eMove = true;
+              nMove = true;
+              sMove = true;
               wMove = true;
 
             }
             else if (playerX == 3 && playerY == 0) {
-              System.out.println("There is no one in the badit camp. There is a town to the south, and a ");
+              System.out.println("There is no one in the badit camp. There is a town to the south, and a cliff to the north.");
 
-              eMove = true;
+              nMove = true;
+              sMove = true;
               wMove = true;
 
             }

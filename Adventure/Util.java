@@ -9,8 +9,8 @@ public class Util {
     static boolean sword = false;
 
 
-    public static void createItem(int x, int y, int z, String item, boolean consumable) {
-        
+    public static void createItem(int x, int y, int z, String itemName, boolean consumable) {
+        Item itemName = new Item
     }
     public static boolean takeItem(int x, int y, int z, String item) {
         if () {
