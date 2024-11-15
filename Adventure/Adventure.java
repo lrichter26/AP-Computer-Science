@@ -17,9 +17,7 @@ public class Adventure
       boolean uMove = false;
 
       int gold = 0;
-      boolean castleKey = false;
-      boolean castle = false;
-      boolean sword = false;
+
 			boolean skipLocation = false;
 
       String command;
@@ -64,7 +62,7 @@ public class Adventure
           	System.out.println("You have " + gold + " gold.");
 						skipLocation = true;
         	}
-					else if (command.equals("take gold") || command.equals("l") || command.equals("loot") || command.equals("take coins") || command.equals("take loot")) {
+					/*else if (command.equals("take gold") || command.equals("l") || command.equals("loot") || command.equals("take coins") || command.equals("take loot")) {
             skipLocation = true;
           	if (!Util.getLooted(playerX, playerY, playerZ)) {
               System.out.print("You take " + Util.getLootAmount(playerX, playerY, playerZ) + " gold. ");
@@ -73,8 +71,21 @@ public class Adventure
               
             }
             else {
-              System.out.println("There is nothing to loot!");
+            System.out.println("There is nothing to loot!");
             }
+              
+              */
+          else if (command.substring(0,5).equals("take") || command.substring(0,1).equals("t")) {
+            if(command.substring(0,5).equals("take")) {
+              command = command.substring(5);
+            }
+            else {
+              command = command.substring(1);
+            }
+            
+          }
+
+
         	}
           else {
             invalid = true;
@@ -237,7 +248,7 @@ public class Adventure
                 nMove = true;
                 sMove = true;
             }
-            else if (playerX == 2 && playerY == 2 && !castleKey && castle) {
+            else if (playerX == 2 && playerY == 2 && castleKey) {
                 System.out.println("Inside the hut, you notice a key of the same shape as the lock on the door in the castle. You take the key.");
 
                 sMove = true;
