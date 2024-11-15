@@ -31,11 +31,11 @@ public class Looping {
         for (int i = 0; i < word.length(); i++) {
             System.out.print(word.substring(i, i + 1));
             for (int j = 0; j < world.length() - 1; j++) {
-                System.out.print(word.substring(j, j + 1);
+                System.out.print(word.substring(j, j + 1));
             }
             for (int k = 0; j < world.length() - 1; k++) {
-                if
-                System.out.print(word.substring(k, k + 1);
+                
+                System.out.print(word.substring(k, k + 1));
             }
         }
     }

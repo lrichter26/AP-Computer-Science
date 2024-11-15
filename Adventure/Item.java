@@ -5,29 +5,48 @@ public class Item {
     private int yPos;
     private int zPos;
     private boolean consumable;
-    private String name;
     private boolean hasItem;
-    public Item(int x, int y, int z, String itemName, boolean consumableIn) {
+    public Item(int x, int y, int z, boolean consumableIn) {
         hasItem = false;
         xPos = x;
         yPos = y;
         zPos = z;
-        name = itemName;
         consumable = consumableIn;
         
     }
-    public boolean hasItem(String itemName) {
-        if (consumable) {
-            hasItem = false;
-        }
+    public boolean hasItem() {
         return hasItem;
     }
-    public boolean takeItem(String itemName) {
+    public boolean setPos(int x, int y, int z) {
+        xPos = x;
+        yPos = y;
+        zPos = z;
+        return true;
+    }
+    public boolean isHere(int x, int y, int z) {
+        if (x == xPos && y == yPos && z == zPos) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public boolean useItem() {
+        boolean used = hasItem;
+        if (consumable && hasItem) {
+            hasItem = false;
+        }
+        return used;
+    }
+    public boolean takeItem() {
         hasItem = true;
         return true;
     }
-    public boolean takeItem(String itemName, int x, int y, int z) {
+    public boolean takeItem(int x, int y, int z) {
         if (x == xPos && y == yPos && z == zPos) {
+            xPos = -1;
+            yPos = -1;
+            zPos = -1;
             hasItem = true;
             return true;
         }
