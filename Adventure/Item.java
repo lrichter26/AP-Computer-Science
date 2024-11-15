@@ -8,9 +8,21 @@ public class Item {
     private boolean consumable;
     private boolean hasItem;
     private String name;
+    private String altName;
     public static List<Item> items = new ArrayList();
     public Item(String itemName, int x, int y, int z, boolean consumableIn) {
         hasItem = false;
+        altName = "";
+        name = itemName;
+        xPos = x;
+        yPos = y;
+        zPos = z;
+        consumable = consumableIn;
+        items.add(Item.this);  
+    }
+    public Item(String itemName, String altItemName, int x, int y, int z, boolean consumableIn) {
+        hasItem = false;
+        altName = altItemName;
         name = itemName;
         xPos = x;
         yPos = y;
@@ -20,6 +32,12 @@ public class Item {
     }
     public boolean hasItem() {
         return hasItem;
+    }
+    public String name() {
+        return name;
+    }
+    public String altName() {
+        return altName;
     }
     public boolean setPos(int x, int y, int z) {
         xPos = x;
