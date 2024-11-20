@@ -73,23 +73,18 @@ public class Item {
         }
     }
     public boolean useItem(int x, int y, int z) {
-        if (xUsePos == null && yUsePos == null && zUsePos == null) {
-            boolean has = hasItem;
-            if (consumable && hasItem) {
-                hasItem = false;
-            }
-            return has;
-        }
-        for (int i = 0; i < xUsePos.length; i++) {
-            if (xUsePos[i] == x && yUsePos[i] == y && zUsePos[i] == z) {
-                boolean has = hasItem;
-                if (consumable && hasItem) {
-                    hasItem = false;
+        if (hasItem) {
+            for (int i = 0; i < xUsePos.length; i++) {
+                if (xUsePos[i] == x && yUsePos[i] == y && zUsePos[i] == z) {
+                    if (consumable && hasItem) {
+                        hasItem = false;
+                    }
+                    return true;
                 }
-                return has;
             }
         }
         return false;
+
     }
     public boolean setHidden(boolean hiddenIn) {
         hidden = hiddenIn;
@@ -141,7 +136,7 @@ public class Item {
     public static String displayItemHere(int x, int y, int z) {
         Item temp = isAnyHere(x, y, z);
         if (temp != null) {
-            return (temp.name)
+            return temp.name;
         }
         else {
             return null;
@@ -155,5 +150,14 @@ public class Item {
             }
         }
         return inventoryReturn;
+    }
+    public static boolean useItem(String itemName, int x, int y, int z) {
+        Item temp = isAnyName(itemName);
+        if (temp != null && temp.hasItem) {
+            return temp.useItem(x, y, z);
+        }
+        else {
+            return false;
+        }
     }
 }

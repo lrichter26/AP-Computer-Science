@@ -75,9 +75,9 @@ public class Adventure
       }
       else if (command.equals("inventory") || command.equals("i")) {
         List<Item> inventoryReturn = Item.itemInventory();
-        System.out.print("You have: ");
-        for (i = 0; i < inventoryReturn.size(); i++) {
-          System.out.print(inventoryReturn.get(i).name + ", ");
+        System.out.print("You are carrying: ");
+        for (int i = 0; i < inventoryReturn.size(); i++) {
+          System.out.print(inventoryReturn.get(i).getName() + ", ");
         }
         System.out.println();
         skipLocation = true;
