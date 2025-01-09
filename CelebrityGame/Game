@@ -1,0 +1,24 @@
+package CelebrityGame;
+public class Game {
+    static int score;
+    static int timer;
+    static Celebrity currentCeleb;
+    static Celebrity[] celebs;
+    static int celebNum
+    public static void main(String[] args) {
+        score = 0;
+        celebNum = 0;
+        celebs = Celebrity.
+        currentCeleb = 
+        timer = System.currentTimeMillis();
+        while (timer + 60000 > System.currentTimeMillis() && celebNum < 5) {
+
+        }
+    }
+    public static void initialiseCelebrities() {
+        Celebrity trump = new Celebrity("donald trump", "a president", "red hair", "current president")
+    }
+    public static void displayCelebrityHint() {
+
+    }
+}

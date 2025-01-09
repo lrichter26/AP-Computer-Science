@@ -1,0 +1,80 @@
+/**
+ * Celebrity base class for the Celebrity game.
+ * @author cody.henrichsen
+ * @version 1.4 17/09/2018
+ */
+package CelebrityGame;
+import java.util.*;
+public class Celebrity
+{
+	/**
+	 * The clue to determine the celebrity
+	 */
+	private String[] clue;
+	/**
+	 * The answer or name of the celebrity.
+	 */
+	private final String name;
+    private int clueNum;
+
+    public static List<Celebrity> celebrities = new ArrayList();
+	/**
+	 * Creates a Celebrity instance with the supplied answer and clue
+	 * @param answer
+	 * @param clue
+	 */
+	public Celebrity(String nameIn, String... clueIn)
+	{
+        name = nameIn;
+        clue = clueIn;
+        clueNum = 0;
+        celebrities.add(this);
+	}
+
+	/**
+	 * Supplies the clue for the celebrity
+	 * @return
+	 */
+	public String getClue()
+	{
+        try {
+		    return clue[clueNum++];
+        }
+        catch (Exception e) {
+            return "Out of clues!";
+        }
+        
+	}
+
+	/**
+	 * Supplies the answer for the celebrity.
+	 * @return
+	 */
+	public String getName()
+	{
+		return name;
+	}
+	public int getClueNum() {
+        return clueNum;
+    }
+    public static Celebrities[] getRandomCelebrities(int number) {
+        List<Celebrities> returnCeleb = new ArrayList();
+        for (int i = 0; i < number; i++) {
+            int rand = Math.random() * celebrities.size();
+            returnCeleb.add(celebrities.get(rand));
+        }
+        return returnCeleb.toArray(new Celebrities[0]);
+    }
+    public static Celebrities[] getCelebrities() {
+        return celebrities.toArray(new Celebrities[0]);
+    }
+	/**
+	 * Provides a String representation of the Celebrity.
+	 */
+	@Override
+	public String toString()
+	{
+		return name;
+	}
+	
+}
