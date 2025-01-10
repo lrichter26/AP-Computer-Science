@@ -1,24 +1,25 @@
 package CelebrityGame;
+import java.util.*;
 public class Game {
     static int score;
     static int timer;
     static Celebrity currentCeleb;
     static Celebrity[] celebs;
     static int celebNum
-    public static void main(String[] args) {
+    public static void play() {
         score = 0;
         celebNum = 0;
-        celebs = Celebrity.
-        currentCeleb = 
+        celebs = Celebrity.getRandomCelebrities()
+        currentCeleb = celebs[0];
         timer = System.currentTimeMillis();
         while (timer + 60000 > System.currentTimeMillis() && celebNum < 5) {
-
+            
         }
     }
     public static void initialiseCelebrities() {
-        Celebrity trump = new Celebrity("donald trump", "a president", "red hair", "current president")
+        Celebrity trump = new Celebrity("donald trump", "red hair", "a president", "current president"); 
     }
     public static void displayCelebrityHint() {
-
+        System.out.println(currentCeleb.getClue());
     }
 }

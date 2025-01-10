@@ -39,6 +39,7 @@ public class Celebrity
 	{
         try {
 		    return clue[clueNum++];
+			clueNum++;
         }
         catch (Exception e) {
             return "Out of clues!";
