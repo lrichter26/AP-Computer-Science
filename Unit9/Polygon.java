@@ -15,4 +15,7 @@ public class Polygon {
     public int getNumberOfSides() {
         return sideLengths.length;
     }
+    public String toString() {
+        return sideLengths.length + " sided shape.";
+    }
 }

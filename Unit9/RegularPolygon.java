@@ -9,4 +9,7 @@ public class RegularPolygon extends Polygon {
     public double getArea() {
         return area;
     }
+    public String toString() {
+        return
+    }
 }
