@@ -1,20 +1,21 @@
 import java.util.*;
 public class ArrayCode {
     public static void main (String[] args) {
-        /*int[] array = new int[50];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = i*2+2;
-        }
-        for (int i : array) {
-            System.out.print(i + ", ");
-        }
-            */
-        String[] names = {"Levi", "Micah", "Silas", "Jong-In"};
-        String input = "y";
+        ArrayList<String> favorites = new ArrayList<String>();
         Scanner scan = new Scanner(System.in);
-        while (input.equals("y")) {
-            System.out.println(names[(int) (Math.random()*names.length)]);
+        String input = "";
+        System.out.print("\033[H\033[2J");
+        while (!input.equals("q")) {
+            System.out.println();
+            System.out.println("What is your favorite class?");
             input = scan.nextLine();
+            favorites.add(input);
+        }
+        favorites.remove(favorites.size() - 1);
+        System.out.println();
+        System.out.println(favorites);
+        for (String val : favorites) {
+            System.out.println(val);
         }
     }
 }
