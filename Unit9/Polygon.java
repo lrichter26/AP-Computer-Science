@@ -12,10 +12,13 @@ public class Polygon {
             sideLengths[i] = sideLength;
         }
     }
+    public double[] getSideLengths() {
+        return sideLengths;
+    }
     public int getNumberOfSides() {
         return sideLengths.length;
     }
     public String toString() {
-        return sideLengths.length + " sided shape.";
+        return sideLengths.length + " sided polygon";
     }
 }

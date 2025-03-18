@@ -10,6 +10,6 @@ public class RegularPolygon extends Polygon {
         return area;
     }
     public String toString() {
-        return
+        return getSideLengths().length + " sided regular polygon with side length of " + getSideLengths()[0];
     }
 }
